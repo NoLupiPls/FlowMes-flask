@@ -1,0 +1,360 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+{{super()}}
+<link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='img/icons/apple-touch-icon.png')}}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='img/icons/favicon-32x32.png')}}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='img/icons/favicon-16x16.png')}}">
+<link rel="manifest" href="{{url_for('static', filename='img/icons/site.webmanifest')}}">
+<script src="https://kit.fontawesome.com/40d3bba8ee.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block title %}
+    {% if title %}FlowMes - {{ title }} {% else %} FlowMes{% endif %}
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/owl.theme.default.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css')}}"> 
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"> 
+    <style>
+        .s-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            position: relative;
+            background-color: var(--accent);
+            border-bottom: 2px solid var(--border-bottom);
+            height: auto;
+        }
+        
+        .s-nav .left-side {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        .s-nav .left-side .logo {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+        }
+        
+        .s-nav .left-side .logo img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .s-nav .left-side .search {
+            border-radius: 100px;
+            width: 250px;
+            position: relative;
+            background-color: var(--lighter);
+            margin-left: 10px;
+            padding-left: 22px;
+        }
+        
+        .s-nav .left-side .search input {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            background-color: transparent;
+            color: var(--placeholder);
+            font-size: 14px;
+            font-family: Poppins;
+        }
+        
+        .s-nav .left-side .search::before {
+            content: '';
+            height: 12px;
+            width: 12px;
+            padding: 2px;
+            background-image: url('../img/icons/search.svg');
+            background-size: contain;
+            position: absolute;
+            left: 12px;
+            top: 18px;
+        }
+        
+        
+        /* .s-nav tabs */
+        .s-nav .tabs {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .s-nav .tabs .tab-icon {
+            height: 100%;
+            margin: 0;
+            margin-top: 5px;
+            width: 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .s-nav .tabs .tab-icon .icon {
+            margin-bottom: 10px;
+            height: 25px;
+            width: 25px;
+            margin: auto;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .s-nav .tabs .tab-icon .icon img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+        
+        .s-nav .tabs .tab-icon.active::after {
+            content: '';
+            position: absolute;
+            bottom: -22px;
+            left: 0;
+            width: 100%;
+            border-bottom: 3px solid var(--border);
+        }
+        .s-nav .right-side .active::after {
+            content: '';
+            position: absolute;
+            bottom: -13px;
+            left: 0;
+            width: 100%;
+            border-bottom: 3px solid var(--border);
+        }
+        .s-nav .tabs .tab-icon .icon.has-notification::after {
+            content: '6';
+            position: absolute;
+            top: -10px;
+            right: -12px;
+            border-radius: 50%;
+            font-size: 0.77rem;
+            color: var(--white);
+            height: 20px;
+            width: 20px;
+            text-align: center;
+            background-color: var(--notification);
+        }
+        
+        .s-nav .tabs .tab-icon:last-child .icon.has-notification::after {
+            content: '4';
+        }
+        
+        /* user side -right side */
+        .s-nav .right-side {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .s-nav .right-side .user-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 15px;
+        }
+        
+        .s-nav .right-side .user-icons .icon {
+            margin: 0 3px;
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--lighter);
+            cursor: pointer;
+        }
+        
+        .s-nav .right-side .user-icons .icon img {
+            height: 40%;
+            width: 40%;
+        }
+        
+        .s-nav .right-side .user-icons .icon.has-notification::after {
+            content: '12';
+            position: absolute;
+            top: -5px;
+            right: 0;
+            border-radius: 20px;
+            font-size: 0.77rem;
+            color: var(--white);
+            padding: 2px 8px;
+            text-align: center;
+            background-color: var(--notification);
+        }
+    </style>
+{% endblock %}
+
+
+
+{% block navbar %}
+    <!--navbar-->
+    {% if current_user.is_authenticated %}
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{url_for('index')}}"><img src="{{url_for('static', filename='img/icons/flowmes.svg')}}" alt="" title='facebook'></a>
+          </div>
+      
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="{{'active' if active_page == 'index' }}"><a href="{{url_for('index')}}">Home <span class="sr-only">(current)</span></a></li>
+              <li class="{{'active' if active_page == 'explore' }}"><a href="{{url_for('explore')}}">Explore</a></li>
+              <li class="{{'active' if active_page == 'users' }}"><a href="{{url_for('users')}}">Users</a></li>
+              <li class="{{'active' if active_page == 'messaging' }}"><a href="{{url_for('messaging')}}">Messaging</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li class="{{'active' if active_page == 'profile' }}"><a href="{{url_for('user', username=current_user.username)}}">{{ current_user.f_name}}'s Profile</a></li>
+                <li class="{{'active' if active_page == 'chat' }}"><a href="{{url_for('messages')}}">Chat</a></li>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <nav class="desktop-nav">
+
+        <!--logo and search-->
+        <div class="left-side">
+            <div class="logo">
+                <a href="{{url_for('index')}}"><img src="{{url_for('static', filename='img/icons/flowmes.svg')}}" alt="" title='FlowMes'></a>
+            </div>
+
+        </div>
+
+        <!--tab icons-->
+        <a href="{{url_for('index')}}">
+        <div class="tabs">
+            <div class="tab-icon {{'active' if active_page == 'index' }}">
+                <div class="icon">
+                    <img src="{{url_for('static', filename='img/icons/home.svg')}}" alt="" title="Home">
+                </div>
+            </div>
+        </a>
+            <a href="{{url_for('explore')}}">
+            <div class="tab-icon {{'active' if active_page == 'explore' }}">
+                <div class="icon">
+                    <img src="{{url_for('static', filename='img/icons/flag.svg')}}" alt="" title="Explore" >
+                </div>
+            </div>
+            </a>
+            <a href="{{url_for('users')}}">
+            <div class="tab-icon {{'active' if active_page == 'users' }}">
+                <div class="icon">
+                    <img src="{{url_for('static', filename='img/icons/users.svg')}}" alt="" title="Users">
+                </div>
+            </div>
+            </a>
+            <a href="{{url_for('messaging')}}">
+            <div class="tab-icon {{'active' if active_page == 'messaging' }}">
+                <div class="icon">
+                    <img src="{{url_for('static', filename='img/icons/chat.png')}}" alt="" title="Messaging">
+                </div>
+            </div>
+        </a>
+        </div>
+
+        <!--right side-->
+        <div class="right-side">
+            <a href="{{url_for('user', username=current_user.username)}}">
+            <div class="user {{'active' if active_page == 'profile' }}">
+                <div class="profile">
+                    <img src="{{url_for('static', filename='img/avatar/' + current_user.profile_image)}}" alt="" title="Profile">
+                </div>
+                <h4>{{ current_user.f_name }}</h4>
+            </div>
+            </a>
+
+            <!--icons-->
+            <a href="{{ url_for('messages') }}">
+            <div class="user-icons">
+                <div class="icon {{'active' if active_page == 'chat' }}">
+                    <img src="{{url_for('static', filename='img/icons/messenger.svg')}}" alt="" title="Chat">
+                    {% set new_messages = current_user.new_messages() %}
+                            {% if new_messages %}
+                            <span class="badge" style="color: red;">{{ new_messages }}</span>
+                            {% endif %}
+                </div>
+            </div>
+            
+            </a>
+           <a href="{{url_for('logout')}}"> <div class="user-icons">
+                <div class="icon">
+                    <img src="{{url_for('static', filename='img/icons/logout.png')}}" alt="" title="Logout">
+                </div>
+            </div></a>
+        </div>
+    </nav>
+    <!--navbar ends-->
+    {% else %}
+    <nav class="s-nav">
+
+        <!--logo and search-->
+        <div class="left-side">
+            <div class="logo">
+                <a href="{{url_for('index')}}"><img src="{{url_for('static', filename='img/icons/flowmes.svg')}}" alt="" title="FlowMes"></a>
+            </div>
+        </div>
+        <div class="right-side">
+
+            <!--icons-->
+           <a href="{{url_for('login')}}"><div class="user-icons">
+                <div class="icon {{'active' if active_page == 'login' }}">
+                    <img src="{{url_for('static', filename='img/icons/login.png')}}" alt="" title="Login">
+                </div>
+            </div></a>
+           <a href="{{url_for('register')}}"> <div class="user-icons">
+                <div class="icon {{'active' if active_page == 'register' }}">
+                    <img src="{{url_for('static', filename='img/icons/register.png')}}" alt="" title="Register">
+                </div>
+            </div></a>
+        </div>
+    </nav>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info alert-dismissible" role="alert" style="text-align: center;">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" style="color:red">&times;</a>
+                    <strong>{{ message }}</strong>
+                </div>          
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    {# application content needs to be provided in the app_content block #}
+    {% block app_content %}{% endblock %}
+    
+{% endblock %}
+
+
+{% block scripts %}
+{{super()}}
+<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/index.js')}}"></script>
+{{ moment.include_moment() }}
+
+{% endblock %}

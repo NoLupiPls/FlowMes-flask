@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block styles %}
+{{super()}}
+    <style>
+        .control-label {
+            display: none;
+        }       
+        body{
+            color: white;
+        }
+        .des{
+            background-color: aliceblue;
+            border-radius: 40px;
+            color: black;
+            padding: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block app_content %}
+ <!--content-->
+ <div class="wrapper">
+
+    <!--posts-->
+    <div class="posts">
+        <!--create post-->
+        <div class="timeline">
+            <!--Post container-->
+            {% include '_post.html' %}
+        </div>
+        
+<h4 id="comments">Comments</h4>
+<div class="comment-form">
+    {{ wtf.quick_form(form) }}
+</div>
+
+{% include '_comment.html' %}
+    <div style="padding: 10px; display:flex; justify-content :center">
+        <nav aria-label="...">
+            <ul class="pager">
+                <li class="previous{% if not prev_url %} disabled{% endif %}">
+                    <a href="{{ prev_url or '#' }}">
+                        <span aria-hidden="true">&larr;</span> Newer Comments
+                    </a>
+                </li>
+        
+                {% for page_num in comments.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                    {% if page_num %}
+                    {% if comments.page_num == page_num %}
+                        <a class="btn btn-info mb-4 active" href="{{ url_for('index', page=page_num)}}">{{page_num}}</a>
+                    {% else %}
+                    <a class="btn btn-outline-info mb-4" href="{{ url_for('index', page=page_num)}}">{{page_num}}</a>
+                    
+                    {% endif %}
+                    {% else  %}
+                        ...
+                    {% endif %}
+                {% endfor %}
+        
+                <li class="next{% if not next_url %} disabled{% endif %}">
+                    <a href="{{ next_url or '#' }}">
+                        Older Comments <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+   
+
+</div>
+
+{% endblock %}
