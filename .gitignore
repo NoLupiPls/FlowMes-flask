@@ -1,1 +1,4 @@
 /venv/
+/.idea/
+/facebook/__pycache__
+Procfile
