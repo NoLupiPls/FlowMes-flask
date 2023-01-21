@@ -1,4 +1,4 @@
-from facebook import app
+from flowmes import app
 from flask_login import current_user
 import os
 from PIL import Image

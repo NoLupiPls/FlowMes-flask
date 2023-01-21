@@ -1,5 +1,5 @@
 from flask import render_template
-from facebook import app, db
+from flowmes import app, db
 
 
 @app.errorhandler(404)

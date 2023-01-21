@@ -1,9 +1,9 @@
 from flask import render_template, flash, redirect, url_for, request
-from facebook import app, db
-from facebook.email import send_password_reset_email
-from facebook.models import User, Post, Comment, Story, Like, Message
-from facebook.forms import RegistrationForm, LoginForm, ResetPasswordRequestForm, ResetPasswordForm, PostForm, EditProfilePhotoForm, EditProfileForm, MessageForm, RecipientList, EditProfileDetailsForm, EmptyForm, EditStoryForm, EditPostForm, CommentForm
-from facebook.utilities import save_post_image, save_profile_picture, save_cover_image, save_story_image, save_message_image
+from flowmes import app, db
+from flowmes.email import send_password_reset_email
+from flowmes.models import User, Post, Comment, Story, Like, Message
+from flowmes.forms import RegistrationForm, LoginForm, ResetPasswordRequestForm, ResetPasswordForm, PostForm, EditProfilePhotoForm, EditProfileForm, MessageForm, RecipientList, EditProfileDetailsForm, EmptyForm, EditStoryForm, EditPostForm, CommentForm
+from flowmes.utilities import save_post_image, save_profile_picture, save_cover_image, save_story_image, save_message_image
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from datetime import datetime
@@ -205,7 +205,7 @@ def edit_profile_details():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     # flash('''Here for a demo and don't want to use your real details, you can register using fake info
-    # \n or login using: 'email': demo@facebook.com, 'password': 'demo' ''')
+    # \n or login using: 'email': demo@flowmes.com, 'password': 'demo' ''')
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = RegistrationForm()

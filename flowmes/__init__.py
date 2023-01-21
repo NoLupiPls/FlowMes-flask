@@ -20,4 +20,4 @@ login.login_view = 'login'
 moment = Moment(app)
 socketio = SocketIO(app)
 
-from facebook import models, routes, errors
+from flowmes import models, routes, errors

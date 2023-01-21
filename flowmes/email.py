@@ -1,6 +1,6 @@
 from flask import render_template
 from flask_mail import Message
-from facebook import mail, app
+from flowmes import mail, app
 from threading import Thread
 
 

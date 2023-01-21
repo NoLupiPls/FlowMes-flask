@@ -3,7 +3,7 @@ from wtforms.fields.html5 import DateField
 from wtforms import StringField, PasswordField, SubmitField, RadioField, BooleanField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_wtf.file import FileField, FileAllowed
-from facebook.models import User
+from flowmes.models import User
 
 
 class RegistrationForm(FlaskForm):
