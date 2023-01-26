@@ -56,18 +56,12 @@ html {
 button,
 input {
     outline: none !important;
-    border-radius: 8px;
-    border
-}
-
-.input {
     border: 1px solid #CDFC6E;
     border-radius: 4px;
     background-color: rgba(40, 40, 40, 0.74);
     color: #CDFC6E;
     font-size: 15px;
 }
-
 
 .btn-default {
     border-radius: 8px;
