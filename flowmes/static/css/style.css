@@ -950,7 +950,7 @@ header{
 
 .cover-img {
     display: flex;
-    width: 940px;
+    width: 80%;
     height: 350px;
     border-radius: 50px;
     overflow: hidden;
