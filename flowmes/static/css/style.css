@@ -56,11 +56,7 @@ html {
 button,
 input {
     outline: none !important;
-    border: 1px solid #CDFC6E;
-    border-radius: 4px;
-    background-color: rgba(40, 40, 40, 0.74);
-    color: #CDFC6E;
-    font-size: 15px;
+    border-radius: 8px;
 }
 
 .btn-default {
