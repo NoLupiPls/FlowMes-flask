@@ -30,7 +30,7 @@ def save_message_image(form_picture):
 
 
 def save_story_image(form_picture):
-    random_hex = secrets.token_hex(8)
+    random_hex = secrets.token_hex(7)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(app.root_path, 'static/img/stories', picture_fn)
