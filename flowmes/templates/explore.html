@@ -35,7 +35,7 @@
                     <div class="icon">
                         <a href="{{url_for('story')}}"><img src="{{url_for('static', filename='img/icons/plus.svg')}}" alt=""></a>
                     </div>
-                    <a href="{{url_for('story')}}"><span>Create a Story</span></a> 
+                    <a href="{{url_for('story')}}"><span>Создать сторис</span></a>
                 </div>
             </div>
             <div class="story-image">
@@ -73,7 +73,7 @@
                 <!--people you may know-->
                 <div class="view friends smaller-margin">
                     <div class="upper">
-                        <h6>people you may know</h6>
+                        <h6>Люди с которыми Вы позможно знакомы</h6>
                          
                     </div>
 
@@ -122,7 +122,7 @@
                 <ul class="pager">
                     <li class="previous{% if not prev_url %} disabled{% endif %}">
                         <a href="{{ prev_url or '#' }}">
-                            <span aria-hidden="true">&larr;</span> Newer posts
+                            <span aria-hidden="true">&larr;</span> Новые посты
                         </a>
                     </li>
 
@@ -141,7 +141,7 @@
 
                     <li class="next{% if not next_url %} disabled{% endif %}">
                         <a href="{{ next_url or '#' }}">
-                            Older posts <span aria-hidden="true">&rarr;</span>
+                            Старые посты <span aria-hidden="true">&rarr;</span>
                         </a>
                     </li>
                 </ul>

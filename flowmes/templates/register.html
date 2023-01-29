@@ -24,15 +24,15 @@
         <div class="col-md-6">
             <div>
                 <img src="{{ url_for('static', filename='img/icons/logo.svg')}}" alt="">
-                <h4 style="text-align:center">FlowMes helps you connect and share with the people in your life.</h4>
+                <h4 style="text-align:center">FlowMes помогает Вам общаться и делиться моментами с людьми из Вашей жизни.</h4>
             </div>
         </div>
         <div class="col-md-6 lower">
-            <h1>Sign Up</h1>
+            <h1>Регистрация</h1>
             <hr>
             {{ wtf.quick_form(form) }}
             <br>
-            <p>Already have an account?,<a href="{{url_for('login')}}"> click to Login!</a></p>
+            <p>Уже имеете аккаунт?<a href="{{url_for('login')}}"> Нажмите, чтобы войти!</a></p>
         </div>
     </div>
 </div>

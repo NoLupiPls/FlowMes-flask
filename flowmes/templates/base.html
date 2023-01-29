@@ -72,7 +72,7 @@
             height: 12px;
             width: 12px;
             padding: 2px;
-            background-image: url('../img/icons/search.svg');
+            background-image: url('../static/img/icons/search.svg');
             background-size: contain;
             position: absolute;
             left: 12px;
@@ -203,7 +203,7 @@
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
+              <span class="sr-only">Переключить навигацию</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -214,16 +214,16 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="{{'active' if active_page == 'index' }}"><a href="{{url_for('index')}}">Home <span class="sr-only">(current)</span></a></li>
-              <li class="{{'active' if active_page == 'explore' }}"><a href="{{url_for('explore')}}">Explore</a></li>
-              <li class="{{'active' if active_page == 'users' }}"><a href="{{url_for('users')}}">Users</a></li>
-              <li class="{{'active' if active_page == 'messaging' }}"><a href="{{url_for('messaging')}}">Messaging</a></li>
+              <li class="{{'active' if active_page == 'index' }}"><a href="{{url_for('index')}}">Домой <span class="sr-only">(current)</span></a></li>
+              <li class="{{'active' if active_page == 'explore' }}"><a href="{{url_for('explore')}}">Поиск</a></li>
+              <li class="{{'active' if active_page == 'users' }}"><a href="{{url_for('users')}}">Пользователи</a></li>
+              <li class="{{'active' if active_page == 'messaging' }}"><a href="{{url_for('messaging')}}">Сообщения</a></li>
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
-                <li class="{{'active' if active_page == 'profile' }}"><a href="{{url_for('user', username=current_user.username)}}">{{ current_user.f_name}}'s Profile</a></li>
-                <li class="{{'active' if active_page == 'chat' }}"><a href="{{url_for('messages')}}">Chat</a></li>
-                <li><a href="{{url_for('logout')}}">Logout</a></li>
+                <li class="{{'active' if active_page == 'profile' }}"><a href="{{url_for('user', username=current_user.username)}}">{{ current_user.f_name}} профиль</a></li>
+                <li class="{{'active' if active_page == 'chat' }}"><a href="{{url_for('messages')}}">Чат</a></li>
+                <li><a href="{{url_for('logout')}}">Выйти</a></li>
 
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -245,28 +245,28 @@
         <div class="tabs">
             <div class="tab-icon {{'active' if active_page == 'index' }}">
                 <div class="icon">
-                    <img src="{{url_for('static', filename='img/icons/home.svg')}}" alt="" title="Home">
+                    <img src="{{url_for('static', filename='img/icons/home.svg')}}" alt="" title="Домой">
                 </div>
             </div>
         </a>
             <a href="{{url_for('explore')}}">
             <div class="tab-icon {{'active' if active_page == 'explore' }}">
                 <div class="icon">
-                    <img src="{{url_for('static', filename='img/icons/flag.svg')}}" alt="" title="Explore" >
+                    <img src="{{url_for('static', filename='img/icons/flag.svg')}}" alt="" title="Поиск" >
                 </div>
             </div>
             </a>
             <a href="{{url_for('users')}}">
             <div class="tab-icon {{'active' if active_page == 'users' }}">
                 <div class="icon">
-                    <img src="{{url_for('static', filename='img/icons/users.svg')}}" alt="" title="Users">
+                    <img src="{{url_for('static', filename='img/icons/users.svg')}}" alt="" title="Пользователи">
                 </div>
             </div>
             </a>
             <a href="{{url_for('messaging')}}">
             <div class="tab-icon {{'active' if active_page == 'messaging' }}">
                 <div class="icon">
-                    <img src="{{url_for('static', filename='img/icons/chat.png')}}" alt="" title="Messaging">
+                    <img src="{{url_for('static', filename='img/icons/chat.png')}}" alt="" title="Чаты">
                 </div>
             </div>
         </a>
@@ -277,7 +277,7 @@
             <a href="{{url_for('user', username=current_user.username)}}">
             <div class="user {{'active' if active_page == 'profile' }}">
                 <div class="profile">
-                    <img src="{{url_for('static', filename='img/avatar/' + current_user.profile_image)}}" alt="" title="Profile">
+                    <img src="{{url_for('static', filename='img/avatar/' + current_user.profile_image)}}" alt="" title="Профиль">
                 </div>
                 <h4>{{ current_user.f_name }}</h4>
             </div>
@@ -287,7 +287,7 @@
             <a href="{{ url_for('messages') }}">
             <div class="user-icons">
                 <div class="icon {{'active' if active_page == 'chat' }}">
-                    <img src="{{url_for('static', filename='img/icons/messenger.svg')}}" alt="" title="Chat">
+                    <img src="{{url_for('static', filename='img/icons/messenger.svg')}}" alt="" title="Чат">
                     {% set new_messages = current_user.new_messages() %}
                             {% if new_messages %}
                             <span class="badge" style="color: red;">{{ new_messages }}</span>
@@ -298,7 +298,7 @@
             </a>
            <a href="{{url_for('logout')}}"> <div class="user-icons">
                 <div class="icon">
-                    <img src="{{url_for('static', filename='img/icons/logout.png')}}" alt="" title="Logout">
+                    <img src="{{url_for('static', filename='img/icons/logout.png')}}" alt="" title="Выйти">
                 </div>
             </div></a>
         </div>
@@ -318,12 +318,12 @@
             <!--icons-->
            <a href="{{url_for('login')}}"><div class="user-icons">
                 <div class="icon {{'active' if active_page == 'login' }}">
-                    <img src="{{url_for('static', filename='img/icons/login.png')}}" alt="" title="Login">
+                    <img src="{{url_for('static', filename='img/icons/login.png')}}" alt="" title="Войти">
                 </div>
             </div></a>
            <a href="{{url_for('register')}}"> <div class="user-icons">
                 <div class="icon {{'active' if active_page == 'register' }}">
-                    <img src="{{url_for('static', filename='img/icons/register.png')}}" alt="" title="Register">
+                    <img src="{{url_for('static', filename='img/icons/register.png')}}" alt="" title="Зарегистрироваться">
                 </div>
             </div></a>
         </div>

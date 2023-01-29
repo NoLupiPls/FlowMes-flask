@@ -60,7 +60,7 @@
 {% endblock %}
 {% block app_content %}
 <div class="container">
-    <h1>Conversations</h1>
+    <h1>Беседы</h1>
     <br>
     {% for post in messages.items %}
         <!--post container-->
@@ -75,7 +75,7 @@
         <div class="desc">
             {% if current_user == post.author %}
             <p class="body"> {{ post.body }}</p>
-            <a href="{{url_for('edit_post', id= post.id)}}"> <span class="label label-primary">Edit</span></a>
+            <a href="{{url_for('edit_post', id= post.id)}}"> <span class="label label-primary">Изменить</span></a>
             {% else %}
             <p class="body"> {{ post.body }}</p>
             {% endif %}
@@ -84,8 +84,8 @@
             <img src="{{ url_for('static', filename='img/messages/' + post.image) }}" alt="">
         </div>
         {% endif %}
-        <span ><a href="{{url_for('send_message', recipient=post.author.username)}}" >Reply</a></span>
-            <span class="time">Sent {{moment(post.timestamp).fromNow()}}</span>
+        <span ><a href="{{url_for('send_message', recipient=post.author.username)}}" >Ответить</a></span>
+            <span class="time">Отправлено {{moment(post.timestamp).fromNow()}}</span>
         </div>
         
     </div>
@@ -98,7 +98,7 @@
         <ul class="pager">
             <li class="previous{% if not prev_url %} disabled{% endif %}">
                 <a href="{{ prev_url or '#' }}">
-                    <span aria-hidden="true">&larr;</span> Newer Messages
+                    <span aria-hidden="true">&larr;</span> Новые сообщения
                 </a>
             </li>
 
@@ -117,7 +117,7 @@
 
             <li class="next{% if not next_url %} disabled{% endif %}">
                 <a href="{{ next_url or '#' }}">
-                    Older Messages <span aria-hidden="true">&rarr;</span>
+                    Старые сообщения <span aria-hidden="true">&rarr;</span>
                 </a>
             </li>
         </ul>

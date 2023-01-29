@@ -56,11 +56,11 @@
                 <h2>{{user.f_name}} {{user.l_name}}</h2>
                 <p>{{ user.about_me }}</p>
                 {% if user == current_user %}
-                <a href="{{ url_for('edit_profile')}}">Edit</a>
+                <a href="{{ url_for('edit_profile')}}">Редактировать</a>
                 {%endif%}
-                <a href="{{ url_for('followers', username=user.username)}}"><p>{{ user.followers.count() }} followers</a> | <a href="{{ url_for('followers', username=user.username)}}">{{ user.followed.count() }} following</a> 
+                <a href="{{ url_for('followers', username=user.username)}}"><p>{{ user.followers.count() }} подписчики</a> | <a href="{{ url_for('followers', username=user.username)}}">{{ user.followed.count() }} following</a>
                     {% if user != current_user and user.is_following(current_user) %}
-                        | <span class="label label-default">Follows you</span>
+                        | <span class="label label-default">Подписан на Вас</span>
                     {% endif %}
                 </p>
                 
@@ -79,12 +79,12 @@
                     </form>
                 </p>
                 {% endif %}
-                <p>Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
+                <p>Был-а в сети: {{ moment(user.last_seen).format('LLL') }}</p>
                 {% if user != current_user %}
                 <p>
                     <a href="{{ url_for('send_message',
                                         recipient=user.username) }}">
-                        Send a Private Message
+                        Отправить сообщение
                     </a>
                 </p>
                 {% endif %}
@@ -92,8 +92,8 @@
             <hr>
             <div class="header-bar">
                 <ul class="header-nav">
-                    <li><a href="#" id="active">Posts</a></li>
-                    <li id="friends"><a href="{{ url_for('followers', username=user.username)}}">Friends</a></li>
+                    <li><a href="#" id="active">Посты</a></li>
+                    <li id="friends"><a href="{{ url_for('followers', username=user.username)}}">Друзья</a></li>
                     {%if user==current_user%}
                     <a href="{{ url_for('edit_profile_details')}}"><span class="header-icons"><i class="fas fa-pen"></i> Edit Details</span></a>
                     {%endif%}
@@ -108,15 +108,15 @@
         <aside>
             <div class="intro">
                 <h3>Intro</h3>
-                <p><i class="fas fa-graduation-cap"></i> Went to <strong>{{user.school}}</strong></p>
-                <p><i class="fas fa-street-view"></i> Lives in <strong>{{user.location}}</strong></p>
+                <p><i class="fas fa-graduation-cap"></i> Обучается в <strong>{{user.school}}</strong></p>
+                <p><i class="fas fa-street-view"></i> Проживает в <strong>{{user.location}}</strong></p>
                 
-                <p><i class="fas fa-house-user"></i> From <strong>{{user.hometown}}</strong></p>
+                <p><i class="fas fa-house-user"></i> Родом из <strong>{{user.hometown}}</strong></p>
                 
                 <p><i class="fas fa-heart"></i><strong> {{user.relationship}}</strong></p>
-                <p><i class="fas fa-birthday-cake"></i> Birthday on {{moment(user.dob).format('LL')}}</p>
+                <p><i class="fas fa-birthday-cake"></i> День рождения {{moment(user.dob).format('LL')}}</p>
                 {% if user == current_user%}
-                <a href="{{url_for('edit_profile_details')}}"><div>Edit Details</div></a>
+                <a href="{{url_for('edit_profile_details')}}"><div>Изменить детали</div></a>
                 {%endif%}
             </div>
             
@@ -124,10 +124,10 @@
         <section>
             
             <div class="posts-top">
-                <span class="h3">Posts</span>
+                <span class="h3">Посты</span>
             </div>
             <div class="posts-bottom">
-                <span id="active"><i class="fas fa-bars"></i> List View</span>
+                <span id="active"><i class="fas fa-bars"></i> Просмотр списка</span>
             </div>
             <!--Post container-->
             {% if posts %}
@@ -142,7 +142,7 @@
                 </div>
                 {% if current_user == user %}
                 <br>
-                <a style='margin-right:10px' href="{{url_for('edit_post', id= post.id)}}"> <span class="label label-primary">Edit</span></a><a href="{{url_for('delete_post', id= post.id)}}"> <span class="label label-danger">Delete</span></a>
+                <a style='margin-right:10px' href="{{url_for('edit_post', id= post.id)}}"> <span class="label label-primary">Изменить</span></a><a href="{{url_for('delete_post', id= post.id)}}"> <span class="label label-danger">Delete</span></a>
                 {%endif%}
             <br>
             <br>
@@ -164,9 +164,9 @@
       {% endif %}
                     
                     <a href="{{ url_for('post', id=post.id) }}"><span class="live-icons"><img src="{{url_for('static', filename='img/icons/comment.svg')}}" alt="">{% if post.comments.count() == 1 %}
-                        {{ post.comments.count() }} Comment
+                        {{ post.comments.count() }} Комментарий
                         {%else %}
-                        {{ post.comments.count() }} Comments
+                        {{ post.comments.count() }} Комментариев
                         {%endif %}</span></a>
                     
                 </div>

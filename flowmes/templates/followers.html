@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1>Followers: </h1>
+            <h1>Подписчики: </h1>
             <br>
             <ul>
                 {% for folower in folowers %}
@@ -34,7 +34,7 @@
             </ul>
         </div>
         <div class="col-md-6">
-            <h1>Followed By: </h1>
+            <h1>Подписан: </h1>
             <br>
             <ul>
                 {% for folowed in foloweds %}
@@ -54,7 +54,7 @@
             </ul>
         </div>
     </div>
-    <a href="{{url_for('user', username=user.username)}}">Back</a>
+    <a href="{{url_for('user', username=user.username)}}">Назад</a>
 </div>
 
 {% endblock %}

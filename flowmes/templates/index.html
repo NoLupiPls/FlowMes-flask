@@ -48,7 +48,7 @@
                     <div class="icon">
                         <a href="{{url_for('story')}}"><img src="{{url_for('static', filename='img/icons/plus.svg')}}" alt=""></a>
                     </div>
-                    <a href="{{url_for('story')}}"><span>Create a Story</span></a> 
+                    <a href="{{url_for('story')}}"><span>Создать сторис</span></a>
                 </div>
             </div>
             <div class="story-image">
@@ -66,7 +66,8 @@
                     </div>
                 </div>
                 {% if current_user == story.author%}
-                <h4><a href="{{url_for('delete_story', id= story.id)}}"> <span class="label label-danger">Delete</span></a> </h4>
+                <h4><a href="{{url_for('delete_story', id= story.id)}}"> <span class="label label-danger">Удалить</span>
+                </a> </h4>
                 {%else%}
                 <h4>{{story.author.f_name}} {{story.author.l_name}}</h4>  
                 {%endif%}
@@ -86,7 +87,8 @@
                     <div class="input">
                         <div class="user">
                             <div class="profile">
-                                <img src="{{url_for('static', filename='img/avatar/' + current_user.profile_image)}}" alt="">
+                                <img src="{{url_for('static', filename='img/avatar/' + current_user.profile_image)}}"
+                                     alt="">
                             </div>
                         </div>
                         {% if form %}
@@ -111,7 +113,7 @@
                     <ul class="pager">
                         <li class="previous{% if not prev_url %} disabled{% endif %}">
                             <a href="{{ prev_url or '#' }}">
-                                <span aria-hidden="true">&larr;</span> Newer posts
+                                <span aria-hidden="true">&larr;</span> Новые посты
                             </a>
                         </li>
     
@@ -130,7 +132,7 @@
     
                         <li class="next{% if not next_url %} disabled{% endif %}">
                             <a href="{{ next_url or '#' }}">
-                                Older posts <span aria-hidden="true">&rarr;</span>
+                                Старые посты <span aria-hidden="true">&rarr;</span>
                             </a>
                         </li>
                     </ul>

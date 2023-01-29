@@ -17,7 +17,7 @@
 {% block app_content %} 
 {% if form %}
 <div class="container">
-    <h1>Edit Profile Details</h1>
+    <h1>Редактировать детали профиля</h1>
     <div class="row">
         <div class="col-md-4">
             {{ wtf.quick_form(form) }}
@@ -25,7 +25,7 @@
     </div>
     <br>
 
-    <a href="{{url_for('user', username=current_user.username)}}">Back</a>
+    <a href="{{url_for('user', username=current_user.username)}}">Назад</a>
 </div>
 {% endif %}
 {% endblock %}
