@@ -31,14 +31,14 @@ class LoginForm(FlaskForm):
 
 class PostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[
-        DataRequired(), Length(min=1, max=140)], render_kw={"placeholder": "What's on your mind ?"})
+        DataRequired(), Length(min=1, max=140)], render_kw={"placeholder": "What's on your mind?"})
     post_image = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Submit')
 
 
 class EditPostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[
-        DataRequired(), Length(min=1, max=140)], render_kw={"placeholder": "What's on your mind ?"})
+        DataRequired(), Length(min=1, max=140)], render_kw={"placeholder": "What's on your mind?"})
     post_image = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Submit')
 

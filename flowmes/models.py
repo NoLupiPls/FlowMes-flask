@@ -121,7 +121,9 @@ def load_user(id):
 
 
 class Post(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    import random
+    rand = random.randint(1, 1000000)
+    id = db.Column(db.Integer, primary_key=True, default=rand)
     body = db.Column(db.String(140))
     post_image = db.Column(db.String(20))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)

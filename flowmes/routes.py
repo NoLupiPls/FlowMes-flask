@@ -66,7 +66,9 @@ def story():
     form = EditStoryForm()
     if form.validate_on_submit():
         story_image = save_story_image(form.story_image.data)
-        story_post = Story(story_image=story_image, author=current_user)
+        import random
+        rand = random.randint(1, 9999999)
+        story_post = Story(id=rand, story_image=story_image, author=current_user)
         db.session.add(story_post)
         db.session.commit()
         flash('Your story is published!')
@@ -142,7 +144,10 @@ def post(id):
     prev_url = url_for('post', page=comments.prev_num) \
         if comments.has_prev else None
     if form.validate_on_submit():
-        comment = Comment(body=form.comment.data,
+        import random
+        rand = random.randint(1, 1000000)
+        comment = Comment(id=rand,
+                          body=form.comment.data,
                           post=post,
                           author=current_user)
         db.session.add(comment)
