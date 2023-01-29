@@ -19,7 +19,7 @@ def before_request():
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
-    flash('You are seeing posts from users you are following only')
+    flash('Вы просмтариваете посты друзей')
     form = PostForm()
     user = User.query.filter_by(username=current_user.username).first_or_404()
     stories = Story.query.all()
@@ -37,7 +37,7 @@ def index():
             post.post_image = post_image
         db.session.add(post)
         db.session.commit()
-        flash('Your post is now live!')
+        flash('Твой пост опубликован!')
         return redirect(url_for('index'))
     return render_template('index.html', title='Home Page', form=form, posts=posts,
                            next_url=next_url, prev_url=prev_url, user=user, stories=stories)
@@ -46,7 +46,7 @@ def index():
 @app.route('/explore', methods=['GET', 'POST'])
 @login_required
 def explore():
-    flash('Вы смотрите посты всез пользователей')
+    flash('Вы смотрите посты всех пользователей')
     form = EmptyForm()
     users = User.query.all()
     stories = Story.query.all()
@@ -71,7 +71,7 @@ def story():
         story_post = Story(id=rand, story_image=story_image, author=current_user)
         db.session.add(story_post)
         db.session.commit()
-        flash('Your story is published!')
+        flash('Твой сторис опубликован!')
         return redirect(url_for('index'))
     return render_template('story.html', title='Add Story', form=form)
 
@@ -127,7 +127,7 @@ def delete_story(id):
     story = Story.query.get_or_404(id)
     db.session.delete(story)
     db.session.commit()
-    flash('Сорис был удалён.')
+    flash('Сторис был удалён.')
     return redirect(request.referrer)
 
 
@@ -261,7 +261,7 @@ def follow(username):
             flash('User {} not found.'.format(username))
             return redirect(request.referrer)
         if user == current_user:
-            flash('You cannot follow yourself!')
+            flash('Вы не можете отписаться от себя!')
             return redirect(request.referrer)
         current_user.follow(user)
         db.session.commit()
@@ -304,7 +304,7 @@ def send_message(recipient):
             msg.image = image
         db.session.add(msg)
         db.session.commit()
-        flash('Your message has been sent.')
+        flash('Твоё сообщение опубликовано.')
         return redirect(request.referrer)
     return render_template('send_message.html', title='Send Message',
                            form=form, user=user)
