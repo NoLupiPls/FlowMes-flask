@@ -10,7 +10,7 @@ class RegistrationForm(FlaskForm):
     f_name = StringField('Имя', validators=[DataRequired(), Length(min=2, max=20)], render_kw={"placeholder": "Имя"})
     l_name = StringField('Фамидия', validators=[DataRequired(), Length(min=2, max=20)], render_kw={"placeholder": "Фамилия"})
     email = StringField('Почта', validators=[DataRequired(), Email()], render_kw={"placeholder": "Почта"})
-    gender = RadioField('Пол', choices=[('мужчин', 'Мужчин'), ('девушк', 'Девушк')])
+    gender = RadioField('Пол', choices=[('мужчин', 'Мужчина'), ('девушк', 'Девушка')])
     dob = DateField('Дата рождения', format='%Y-%m-%d', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()], render_kw={"placeholder": "Пароль"})
     confirm_password = PasswordField('Повторите пароль', validators=[DataRequired(), EqualTo('password')], render_kw={"placeholder": "Повторите пароль"})
