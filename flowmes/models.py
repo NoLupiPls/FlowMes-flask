@@ -122,7 +122,7 @@ def load_user(id):
 
 class Post(db.Model):
     import random
-    rand = random.randint(1, 999999999)
+    rand = random.randint(1, 9999999)
     id = db.Column(db.Integer, primary_key=True, default=rand)
     body = db.Column(db.String(140))
     post_image = db.Column(db.String(20))
