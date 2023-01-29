@@ -113,7 +113,7 @@
                 
                 <p><i class="fas fa-house-user"></i> From <strong>{{user.hometown}}</strong></p>
                 
-                <p><i class="fas fa-heart"></i><strong>{{user.relationship}}</strong></p>
+                <p><i class="fas fa-heart"></i><strong> {{user.relationship}}</strong></p>
                 <p><i class="fas fa-birthday-cake"></i> Birthday on {{moment(user.dob).format('LL')}}</p>
                 {% if user == current_user%}
                 <a href="{{url_for('edit_profile_details')}}"><div>Edit Details</div></a>
