@@ -148,7 +148,7 @@ class Comment(db.Model):
 
 class Like(db.Model):
     import random
-    rand = random.randint(1, 9999999999)
+    rand = random.randint(1, 99999999)
     id = db.Column(db.Integer, primary_key=True, default=rand)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -169,7 +169,9 @@ class Story(db.Model):
 
 
 class Message(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    import random
+    rand = random.randint(1, 1000000)
+    id = db.Column(db.Integer, primary_key=True, default=rand)
     sender_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     recipient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     body = db.Column(db.String(140))
