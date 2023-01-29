@@ -46,7 +46,7 @@ def index():
 @app.route('/explore', methods=['GET', 'POST'])
 @login_required
 def explore():
-    flash('You are seeing posts from all users')
+    flash('Вы смотрите посты всез пользователей')
     form = EmptyForm()
     users = User.query.all()
     stories = Story.query.all()
@@ -106,7 +106,7 @@ def edit_post(id):
             post_image = save_post_image(form.post_image.data)
             post.post_image = post_image
         db.session.commit()
-        flash('The post has been updated.')
+        flash('Изменения подтверждены.')
         return redirect(url_for('post', id=post.id))
     elif request.method == 'GET':
         form.post.data = post.body
@@ -118,7 +118,7 @@ def delete_post(id):
     post = Post.query.get_or_404(id)
     db.session.delete(post)
     db.session.commit()
-    flash('The post has been deleted.')
+    flash('Пост был удалён.')
     return redirect(url_for('index'))
 
 
@@ -127,7 +127,7 @@ def delete_story(id):
     story = Story.query.get_or_404(id)
     db.session.delete(story)
     db.session.commit()
-    flash('The story has been deleted.')
+    flash('Сорис был удалён.')
     return redirect(request.referrer)
 
 
@@ -152,7 +152,7 @@ def post(id):
                           author=current_user)
         db.session.add(comment)
         db.session.commit()
-        flash('Your comment has been published.')
+        flash('Твой комментарий опубликован.')
         return redirect(url_for('post', id=post.id))
     return render_template('post.html', form=form, post=post, comments=comments, next_url=next_url, prev_url=prev_url, title='Post' + str(post.id))
 
@@ -176,7 +176,7 @@ def edit_profile():
         current_user.set_username(form.f_name.data, form.l_name.data)
         current_user.about_me = form.about_me.data
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash('Твои изменения были сохранены.')
         return redirect(url_for('edit_profile'))
     elif request.method == 'GET':
         form.f_name.data = current_user.f_name
@@ -196,7 +196,7 @@ def edit_profile_details():
         current_user.location = form.location.data
         current_user.relationship = form.relationship.data
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash('Твои изменения были сохранены.')
         return redirect(url_for('edit_profile_details'))
     elif request.method == 'GET':
         form.school.data = current_user.school
@@ -222,7 +222,7 @@ def register():
         user.set_password(form.password.data.lower())
         db.session.add(user)
         db.session.commit()
-        flash('Congratulations, you are now a registered user!')
+        flash('Великолепно, Вы зарегистрированы!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Sign Up', form=form)
 
@@ -235,7 +235,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data.lower()).first()
         if user is None or not user.check_password(form.password.data.lower()):
-            flash('Invalid username or password')
+            flash('Неверный логин или пароль')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
@@ -265,7 +265,7 @@ def follow(username):
             return redirect(request.referrer)
         current_user.follow(user)
         db.session.commit()
-        flash('You are following {}!'.format(username))
+        flash('Вы подписаны на {}!'.format(username))
         return redirect(request.referrer)
     else:
         return redirect(request.referrer)
@@ -278,14 +278,14 @@ def unfollow(username):
     if form.validate_on_submit():
         user = User.query.filter_by(username=username).first()
         if user is None:
-            flash('User {} not found.'.format(username))
+            flash('Пользователь {} не найден.'.format(username))
             return redirect(request.referrer)
         if user == current_user:
-            flash('You cannot unfollow yourself!')
+            flash('Вы не можете отписаться от себя!')
             return redirect(request.referrer)
         current_user.unfollow(user)
         db.session.commit()
-        flash('You are not following {}.'.format(username))
+        flash('Вы не подписаны на {}.'.format(username))
         return redirect(request.referrer)
     else:
         return redirect(request.referrer)
@@ -373,7 +373,7 @@ def reset_password_request():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             send_password_reset_email(user)
-        flash('Check your email for the instructions to reset your password')
+        flash('Проверьте свою электронную почту для получения инструкций по сбросу пароля')
         return redirect(url_for('login'))
     return render_template('reset_password_request.html',
                            title='Reset Password', form=form)
@@ -390,6 +390,6 @@ def reset_password(token):
     if form.validate_on_submit():
         user_v.set_password(form.password.data)
         db.session.commit()
-        flash('Your password has been reset.')
+        flash('Ваш пароль был изменён.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)

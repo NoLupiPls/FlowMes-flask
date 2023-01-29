@@ -17,4 +17,4 @@ class Config(object):
     MAIL_USE_SSL = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = ['098oper@gmail.com']
+    ADMINS = ['nl1authority@gmail.com']
