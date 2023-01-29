@@ -122,7 +122,7 @@ def load_user(id):
 
 class Post(db.Model):
     import random
-    rand = random.randint(1, 1000000)
+    rand = random.randint(1, 999999999)
     id = db.Column(db.Integer, primary_key=True, default=rand)
     body = db.Column(db.String(140))
     post_image = db.Column(db.String(20))
@@ -147,7 +147,9 @@ class Comment(db.Model):
 
 
 class Like(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    import random
+    rand = random.randint(1, 9999999999)
+    id = db.Column(db.Integer, primary_key=True, default=rand)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
