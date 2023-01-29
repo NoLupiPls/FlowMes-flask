@@ -6,7 +6,7 @@ import secrets
 
 
 def save_post_image(form_picture):
-    random_hex = secrets.token_hex(7)
+    random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(app.root_path, 'static/img/posts', picture_fn)
@@ -18,7 +18,7 @@ def save_post_image(form_picture):
 
 
 def save_message_image(form_picture):
-    random_hex = secrets.token_hex(7)
+    random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(app.root_path, 'static/img/messages', picture_fn)
@@ -30,7 +30,7 @@ def save_message_image(form_picture):
 
 
 def save_story_image(form_picture):
-    random_hex = secrets.token_hex(7)
+    random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(app.root_path, 'static/img/stories', picture_fn)
@@ -45,7 +45,7 @@ def save_cover_image(form_picture):
     if form_picture is None:
         picture_fn = current_user.cover_image
         return picture_fn
-    random_hex = secrets.token_hex(7)
+    random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(app.root_path, 'static/img/cover', picture_fn)
@@ -60,7 +60,7 @@ def save_profile_picture(form_picture):
     if form_picture is None:
         picture_fn = current_user.profile_image
         return picture_fn
-    random_hex = secrets.token_hex(7)
+    random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(app.root_path, 'static/img/avatar', picture_fn)
