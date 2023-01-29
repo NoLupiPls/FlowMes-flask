@@ -210,7 +210,9 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(f_name=form.f_name.data, l_name=form.l_name.data, email=form.email.data.lower(), gender=form.gender.data, dob=form.dob.data)
+        import random
+        rand = random.randint(1, 1000000)
+        user = User(id=rand, f_name=form.f_name.data, l_name=form.l_name.data, email=form.email.data.lower(), gender=form.gender.data, dob=form.dob.data)
         user.set_username(form.f_name.data, form.l_name.data)
         user.set_password(form.password.data.lower())
         db.session.add(user)
