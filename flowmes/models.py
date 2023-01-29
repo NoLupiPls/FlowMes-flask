@@ -160,7 +160,7 @@ class Like(db.Model):
 
 class Story(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    story_image = db.Column(db.String(20))
+    story_image = db.Column(db.String(30))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
