@@ -7,6 +7,10 @@ from flask_moment import Moment
 from flask_mail import Mail
 from flask_socketio import SocketIO
 from config import Config
+from dotenv import load_dotenv
+
+load_dotenv()
+import os
 
 
 app = Flask(__name__)
@@ -16,7 +20,7 @@ app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USERNAME'] = 'nl1authority@gmail.com'
-app.config['MAIL_PASSWORD'] = '${{ MAIL_PASSWORD }}'
+app.config['MAIL_PASSWORD'] = str(os.getenv("MAIL_PASSWORD"))
 db = SQLAlchemy(app)
 mail = Mail(app)
 migrate = Migrate(app, db, render_as_batch=True)

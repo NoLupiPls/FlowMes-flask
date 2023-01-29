@@ -5,6 +5,7 @@ blinker==1.4
 cffi==1.15.1
 click==7.1.2
 cryptography==3.4.7
+python-dotenv
 dnspython==2.1.0
 dominate==2.6.0
 email-validator==1.1.2
