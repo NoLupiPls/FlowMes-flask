@@ -79,7 +79,7 @@
                     </form>
                 </p>
                 {% endif %}
-                <p>Был-а в сети: {{ moment(user.last_seen).format('LLL') }}</p>
+                <p>Был/а в сети: {{ moment(user.last_seen).format('LLL') }}</p>
                 {% if user != current_user %}
                 <p>
                     <a href="{{ url_for('send_message',
@@ -95,7 +95,7 @@
                     <li><a href="#" id="active">Посты</a></li>
                     <li id="friends"><a href="{{ url_for('followers', username=user.username)}}">Друзья</a></li>
                     {%if user==current_user%}
-                    <a href="{{ url_for('edit_profile_details')}}"><span class="header-icons"><i class="fas fa-pen"></i> Edit Details</span></a>
+                    <a href="{{ url_for('edit_profile_details')}}"><span class="header-icons"><i class="fas fa-pen"></i> Изменить детали</span></a>
                     {%endif%}
                 </ul>
 

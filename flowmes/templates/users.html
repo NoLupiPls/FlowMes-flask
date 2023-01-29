@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1>Discover Users: </h1>
+            <h1>Все пользователи: </h1>
             <hr>
             {% for user in users %}
             {% if user != current_user%}
@@ -42,7 +42,7 @@
 <!--people you may know-->
 <div class="view friends smaller-margin col-md-6">
     <div class="upper">
-        <h6>people you may know</h6>
+        <h6>люди, которых Вы возможно знаете</h6>
          
     </div>
 
@@ -89,7 +89,7 @@
     </div>
     
 
-    <a href="{{url_for('index')}}">Back</a>
+    <a href="{{url_for('index')}}">Назад</a>
 </div>
 
 {% endblock %}

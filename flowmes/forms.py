@@ -32,14 +32,14 @@ class LoginForm(FlaskForm):
 class PostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[
         DataRequired(), Length(min=1, max=140)], render_kw={"placeholder": "Что Вы хотите написать?"})
-    post_image = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+    post_image = FileField('Обновить аватар', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Опубликовать')
 
 
 class EditPostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[
         DataRequired(), Length(min=1, max=140)], render_kw={"placeholder": "Что Вы хотите написать?"})
-    post_image = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+    post_image = FileField('Обновить аватар', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Опубликовать')
 
 
@@ -63,7 +63,7 @@ class EditProfileForm(FlaskForm):
 
 class EditProfileDetailsForm(FlaskForm):
     school = StringField('Школа', validators=[DataRequired()])
-    hometown = StringField('Город', validators=[DataRequired()])
+    hometown = StringField('Родом из города', validators=[DataRequired()])
     location = StringField('Проживаете в', validators=[DataRequired()])
     relationship = RadioField('Gender', choices=[('одинок', 'Одинок'), ('женат', 'Женат'), ('в отношениях', 'В отношениях')])
     submit = SubmitField('Готово')
@@ -87,7 +87,7 @@ class LikeForm(FlaskForm):
 
 class MessageForm(FlaskForm):
     message = TextAreaField('Message', validators=[DataRequired(), Length(min=0, max=140)], render_kw={"placeholder": "Введите сообщение"})
-    image = FileField('Add Photo', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
+    image = FileField('Добавить фото', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
     submit = SubmitField('Опубликовать')
 
 
