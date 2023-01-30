@@ -68,11 +68,10 @@
                     <a href="{{ url_for('post', id=post.id) }}">
                         <span class="label label-primary">
                             {% if post.comments.count() == 1 %}
-                    {{ post.comments.count() }} Comment
+                    {{ post.comments.count() }} Комментарий
                     {%else %}
-                    {{ post.comments.count() }} Comments
+                    {{ post.comments.count() }} Комментариев
                     {%endif %}
-
                         </span>
                     </a>
                 </span>
